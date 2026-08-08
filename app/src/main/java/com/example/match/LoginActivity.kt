@@ -10,7 +10,10 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var login_ETXT_Email: AppCompatEditText
@@ -49,26 +52,32 @@ class LoginActivity : AppCompatActivity() {
         login_BTN_Login.setOnClickListener {
             val email = login_ETXT_Email.text.toString().trim()
             val password = login_ETXT_Password.text.toString().trim()
-            if(email.isEmpty()||password.isEmpty())
-            {
-                Toast.makeText(this,"Please enter email or password", Toast.LENGTH_SHORT).show()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            auth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this){task ->
-                    if(task.isSuccessful){
-                        Toast.makeText(this,"Login succesful", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }else
-                    {
-                        Toast.makeText(this, "Login failed: Wrong mail or password", Toast.LENGTH_SHORT).show()
-                    }
 
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
-
-
+                .addOnFailureListener { exception ->
+                    when (exception) {
+                        is FirebaseNetworkException -> {
+                            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+                        }
+                        is FirebaseAuthInvalidUserException, is FirebaseAuthInvalidCredentialsException -> {
+                            Toast.makeText(this, "Wrong email or password", Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {
+                            Toast.makeText(this, "Login failed: ${exception.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
         }
 
     }

@@ -22,6 +22,7 @@ class NotificationsActivity : AppCompatActivity() {
     private lateinit var db : FirebaseFirestore
     private lateinit var adapter: RequestAdapter
     private val requestsList = mutableListOf<RequestItem>()
+    private val processingRequests = mutableSetOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +94,10 @@ class NotificationsActivity : AppCompatActivity() {
     }
 
     fun approveRequest(request: RequestItem, position: Int) {
+        if (processingRequests.contains(request.userId)) {
+            return
+        }
+        processingRequests.add(request.userId)
         val partyRef = db.collection("watch_parties").document(request.partyId)
 
         partyRef.update(
@@ -100,13 +105,16 @@ class NotificationsActivity : AppCompatActivity() {
             "participants", FieldValue.arrayUnion(request.userId),
             "joined", FieldValue.increment(1)
         ).addOnSuccessListener {
-            Toast.makeText(this, "אישרת את ${request.userName}!", Toast.LENGTH_SHORT).show()
+            val currentIndex = requestsList.indexOfFirst { it.userId == request.userId }
+            if (currentIndex != -1) {
+                adapter.removeItem(currentIndex) // קורא לפונקציה המקורית שבנית באדפטר
+                Toast.makeText(this, "you approve ${request.userName}!", Toast.LENGTH_SHORT).show()
+            }
 
-            // מוחקים את הבקשה מהרשימה שבמסך (היא תעלם עם אנימציה יפה)
-            adapter.removeItem(position)
 
         }.addOnFailureListener { e ->
-            Toast.makeText(this, "שגיאה באישור: ${e.message}", Toast.LENGTH_SHORT).show()
+            processingRequests.remove(request.userId)
+            Toast.makeText(this, "Error ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
