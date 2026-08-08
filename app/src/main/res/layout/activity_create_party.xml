@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreatePartyActivity"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/create_TXT_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Host A Watch Party"
+        android:layout_toEndOf="@id/create_BTN_back"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/create_TXT_header2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create your event"
+        android:layout_below="@id/create_TXT_header"
+        android:layout_toEndOf="@id/create_BTN_back"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/create_TXT_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event name"
+        android:layout_below="@id/create_BTN_back"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/create_TXT_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:layout_below="@id/create_ETXT_name"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/create_TXT_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:layout_below="@id/create_ETXT_address"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/create_TXT_capacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capacity"
+        android:layout_below="@id/create_choose_type"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+
+
+    <ImageButton
+        android:id="@+id/create_BTN_back"
+        android:layout_width="60dp"
+        android:layout_height = "60dp"
+        app:srcCompat="@drawable/back_arrow"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/create_BTN_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Party"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:textSize="30sp"
+        android:backgroundTint="@color/button"
+        app:cornerRadius="10dp"
+        />
+
+    <EditText
+        android:id="@+id/create_ETXT_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_below="@id/create_TXT_name"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_border"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/create_ETXT_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        android:layout_below="@id/create_TXT_address"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_border"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="@dimen/default_margin"/>
+
+    <EditText
+        android:id="@+id/create_ETXT_capacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_below="@id/create_TXT_capacity"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_border"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        />
+
+
+
+    <TextView
+        android:id="@+id/create_TXT_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hour"
+        android:layout_below="@id/create_ETXT_capacity"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        />
+
+
+
+    <EditText
+        android:id="@+id/create_ETXT_hour"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:layout_below="@id/create_TXT_hour"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/custom_border"
+        />
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/create_choose_type"
+    android:layout_below="@id/create_TXT_type">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/create_RBTN_pub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pub" />
+
+    <RadioButton
+        android:id="@+id/create_RBTN_private"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Private" />
+    </RadioGroup>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</RelativeLayout>

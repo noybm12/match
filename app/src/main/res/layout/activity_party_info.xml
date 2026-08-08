@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PartyInfoActivity"
+    android:background="@color/background">
+    <Button
+        android:id="@+id/partyinfo_BTN_join"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:cornerRadius="10dp"
+        android:text="Join"
+        android:textSize="30sp"
+        android:backgroundTint="@color/button" />
+    <TextView
+        android:id="@+id/partyinfo_TXT_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
+    <ImageButton
+        android:id="@+id/partyinfo_BTN_back"
+        android:layout_width="60dp"
+        android:layout_height = "60dp"
+        app:srcCompat="@drawable/back_arrow"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/partyinfo_TXT_name"
+        android:layout_above="@id/partyinfo_BTN_join"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+    <include
+        android:id="@+id/single_match_card"
+        layout="@layout/item_match_card2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_below="@id/partyinfo_TXT_name">
+
+    </include>
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/partyinfo_TXT_host"
+    android:background="@drawable/custom_border"
+    android:layout_marginHorizontal="20dp"
+    android:id="@+id/partyinfo_address">
+    <ImageView
+        android:id="@+id/partyinfo_IMG_location"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/location"
+        android:background="@drawable/custom_background" />
+    <TextView
+        android:id="@+id/partyinfo_TXT_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Addrees"
+        android:textSize="25sp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="10dp"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/partyinfo_address"
+        android:background="@drawable/custom_border"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/partyinfo_time">
+        <ImageView
+            android:id="@+id/partyinfo_IMG_time"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/clock"
+            android:background="@drawable/custom_background2" />
+        <TextView
+            android:id="@+id/partyinfo_TXT_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textSize="25sp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="10dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/partyinfo_TXT_host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_border"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:layout_below="@+id/single_match_card"
+        />
+            <TextView
+                android:id="@+id/partyinfo_TXT_participants_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/partyinfo_time"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Participants"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- הרשימה עצמה (RecyclerView) -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/partyinfo_RV_participants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/partyinfo_TXT_participants_title"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_participant" />
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

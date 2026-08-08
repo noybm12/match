@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationsActivity"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/notitfy_TXT_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Membership Requests"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/text"/>
+
+    <ImageButton
+        android:id="@+id/notify_BTN_back"
+        android:layout_width="60dp"
+        android:layout_height = "60dp"
+        app:srcCompat="@drawable/back_arrow"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/notitfy_TXT_header"
+        tools:listitem="@layout/item_request"
+        android:id="@+id/notify_RV_requests"/>
+</RelativeLayout>

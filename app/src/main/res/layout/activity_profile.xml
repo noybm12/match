@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:background="@color/background">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/profile_BTN_back"
+        android:layout_width="60dp"
+        android:layout_height = "60dp"
+        app:srcCompat="@drawable/back_arrow"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+    <ImageButton
+        android:id="@+id/profile_BTN_notifications"
+        android:layout_width="60dp"
+        android:layout_height = "60dp"
+        app:srcCompat="@drawable/bell"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/profile_IMG_photo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:srcCompat="@drawable/profile_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/default_margin"
+        android:scaleType="fitCenter"
+        />
+    <ImageView
+        android:id="@+id/profile_IMG_dot"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:srcCompat="@drawable/dot"
+        android:layout_marginTop="@dimen/default_margin"
+        android:scaleType="fitCenter"
+        android:layout_alignStart="@id/profile_BTN_notifications"
+        android:visibility="gone"
+        />
+
+    <ImageButton
+        android:id="@+id/profile_BTN_add"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/add"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"
+        android:layout_alignBottom="@id/profile_IMG_photo"
+        android:layout_alignEnd="@id/profile_IMG_photo"
+        />
+
+    <TextView
+        android:id="@+id/profile_TXT_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_below="@id/profile_BTN_add"
+        android:text="TextView"
+        android:textSize="30sp"
+        android:background="@drawable/custom_border"/>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/israeli_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_TXT_name"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/custom_border">
+
+        <ImageView
+            android:id="@+id/profile_IMG_israeli_team"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+        <TextView
+            android:id="@+id/profile_TXT_israeli_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="30sp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/israeli_team"
+    android:layout_marginHorizontal="@dimen/default_margin"
+    android:layout_marginTop="@dimen/default_margin"
+    android:background="@drawable/custom_border"
+    android:id="@+id/national_team">
+        <ImageView
+            android:id="@+id/profile_IMG_national_team"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+        <TextView
+            android:id="@+id/profile_TXT_national_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="30sp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+<com.google.android.material.button.MaterialButtonToggleGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/profile_TXT_myparties"
+    app:singleSelection="true"
+    app:selectionRequired="true"
+    android:id="@+id/profile_ToggleGroup"
+    android:layout_marginHorizontal="@dimen/default_margin">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_BTN_host"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="?attr/materialButtonOutlinedStyle"
+        android:backgroundTint="@color/toggle_button_color"
+        app:strokeColor="@color/toggle_button_color"
+        android:layout_weight="1"
+        android:text="host" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_BTN_joined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/toggle_button_color"
+        android:backgroundTint="@color/toggle_button_color"
+        android:layout_weight="1"
+        android:text="joined" />
+</com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/profile_ToggleGroup"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        tools:listitem="@layout/item_event_card"
+        android:id="@+id/profile_RCV_parties"
+        />
+
+    <TextView
+        android:id="@+id/profile_TXT_myparties"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My parties:"
+        android:textColor="@color/text"
+        android:textSize="20sp"
+        android:layout_below="@id/national_team"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/default_margin"/>
+
+</RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
